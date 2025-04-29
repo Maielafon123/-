@@ -1,7 +1,6 @@
-# config.py
 import os
 
-# Пути для Windows
+
 USER_PROFILE = os.environ['USERPROFILE']
 BASE_DIRS = {
     'documents': os.path.join(USER_PROFILE, 'Documents'),
@@ -13,4 +12,4 @@ BASE_DIRS = {
     )
 }
 
-IGNORE_FILES = ['passwords.txt', 'secrets']  # Что игнорировать
+IGNORE_FILES = ['passwords.txt', 'secrets']  
