@@ -1,15 +1,13 @@
-# data_parsers/file_system.py
 import os
 from pathlib import Path
 import docx
-# data_parsers/file_system.py
 import sys
-sys.path.append("C:\\Users\\cvtcvtcvt\\Desktop\\digital_self_game")  # ← Абсолютный путь
+sys.path.append("C:\\Users\\cvtcvtcvt\\Desktop\\digital_self_game") 
 
 from config import BASE_DIRS, IGNORE_FILES
 
-def scan_documents() -> dict:  # ← Убедитесь, что функция названа точно так!
-    """Сканирует документы на наличие ключевых слов"""
+def scan_documents() -> dict: 
+ 
     file_data = {
         "txt": [],
         "docx": [],
@@ -27,7 +25,7 @@ def scan_documents() -> dict:  # ← Убедитесь, что функция �
                     continue
 
                 try:
-                    # Анализ TXT
+                
                     if file.endswith(".txt"):
                         with open(file_path, "r", encoding="utf-8") as f:
                             content = f.read(2000)
@@ -35,7 +33,7 @@ def scan_documents() -> dict:  # ← Убедитесь, что функция �
                             if any(word in content.lower() for word in SECRET_WORDS):
                                 file_data["secret_keywords"].append(str(file_path))
                     
-                    # Анализ DOCX
+            
                     elif file.endswith(".docx"):
                         doc = docx.Document(file_path)
                         content = " ".join([para.text for para in doc.paragraphs[:5]])
@@ -43,7 +41,7 @@ def scan_documents() -> dict:  # ← Убедитесь, что функция �
                         if any(word in content.lower() for word in SECRET_WORDS):
                             file_data["secret_keywords"].append(str(file_path))
                     
-                    # EXE-файлы
+
                     elif file.endswith(".exe"):
                         file_data["exe"].append(str(file_path))
                         
