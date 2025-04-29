@@ -1,10 +1,10 @@
-# data_parsers/browser_history.py
+
 import sqlite3
 from pathlib import Path
 import os
 
 def get_chrome_history(limit: int = 10) -> list[tuple[str, str]]:
-    """Возвращает историю Chrome"""
+
     history_path = Path(
         os.environ['USERPROFILE'],
         'AppData', 'Local', 'Google', 'Chrome',
@@ -12,7 +12,7 @@ def get_chrome_history(limit: int = 10) -> list[tuple[str, str]]:
     )
     
     if not history_path.exists():
-        return []  # Возвращаем пустой список вместо исключения
+        return []  
     
     try:
         conn = sqlite3.connect(str(history_path))
